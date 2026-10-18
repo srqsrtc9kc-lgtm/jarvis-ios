@@ -1,0 +1,60 @@
+name: JARVIS test ve iOS derleme
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: jarvis-ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: macos-26
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Xcode ve Swift sürümü
+        run: |
+          xcodebuild -version
+          swift --version
+      - name: Çekirdek davranış testleri
+        run: swift test
+      - name: XcodeGen
+        run: brew install xcodegen
+      - name: Xcode projesini üret
+        run: xcodegen generate
+      - name: Simulator derlemesi
+        run: >-
+          xcodebuild -project JarvisKoc.xcodeproj -scheme JarvisKoc
+          -configuration Debug -sdk iphonesimulator
+          -destination 'generic/platform=iOS Simulator'
+          CODE_SIGNING_ALLOWED=NO build-for-testing
+      - name: Kullanılabilir iPhone simulatorünü seç
+        run: |
+          xcrun simctl list devices available --json > "$RUNNER_TEMP/jarvis-devices.json"
+          python3 - <<'PY'
+          import json, os
+          with open(os.path.join(os.environ['RUNNER_TEMP'], 'jarvis-devices.json')) as f:
+              devices = json.load(f)['devices']
+          matches = [d for runtime, rows in devices.items() if '.iOS-' in runtime for d in rows if d.get('isAvailable') and 'iPhone' in d['name']]
+          if not matches:
+              raise SystemExit('Uygun iPhone simulatorü bulunamadı.')
+          with open(os.environ['GITHUB_ENV'], 'a') as f:
+              f.write('JARVIS_SIMULATOR_ID=' + matches[0]['udid'] + '\n')
+          PY
+      - name: iOS birim testleri
+        run: >-
+          xcodebuild -project JarvisKoc.xcodeproj -scheme JarvisKoc
+          -configuration Debug -sdk iphonesimulator
+          -destination "platform=iOS Simulator,id=$JARVIS_SIMULATOR_ID"
+          -resultBundlePath TestResults.xcresult
+          CODE_SIGNING_ALLOWED=NO test-without-building
+      - name: Test sonuçlarını sakla
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: JARVIS-iOS-test-results
+          path: TestResults.xcresult
+          if-no-files-found: ignore

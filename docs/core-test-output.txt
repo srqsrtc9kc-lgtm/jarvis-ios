@@ -1,0 +1,108 @@
+[0/1] Planning build
+Building for debugging...
+[0/4] Write swift-version--7E6FFCDB84154A0.txt
+[1/4] Write sources
+<unknown>:0: warning: legacy driver is now deprecated; consider avoiding specifying '-disallow-use-new-driver'
+<unknown>:0: warning: option '-incremental' is only supported in swift-driver
+[4/10] Compiling JarvisCore CoachPrompt.swift
+[5/10] Compiling JarvisCore Curriculum.swift
+[6/10] Compiling JarvisCore MemoryRepository.swift
+[7/10] Compiling JarvisCore Models.swift
+[8/10] Compiling JarvisCore ProactiveEngine.swift
+[9/10] Compiling JarvisCore ProgressEngine.swift
+[10/11] Merging module JarvisCore
+<unknown>:0: warning: legacy driver is now deprecated; consider avoiding specifying '-disallow-use-new-driver'
+<unknown>:0: warning: option '-incremental' is only supported in swift-driver
+[11/18] Compiling JarvisCoreTests JarvisCoreTests.swift
+[12/19] Merging module JarvisCoreTests
+[12/19] Wrapping AST for JarvisCoreTests for debugging
+[13/19] /workspace/scratch/72db9576b02b/jarvis-work/JARVIS_Yerel_iOS_V3/.build/x86_64-unknown-linux-gnu/debug/JarvisCorePackageDiscoveredTests.derived/all-discovered-tests.swift
+[14/20] Write sources
+<unknown>:0: warning: legacy driver is now deprecated; consider avoiding specifying '-disallow-use-new-driver'
+<unknown>:0: warning: option '-incremental' is only supported in swift-driver
+[16/22] Compiling JarvisCorePackageDiscoveredTests JarvisCoreTests.swift
+[17/22] Compiling JarvisCorePackageDiscoveredTests all-discovered-tests.swift
+[18/23] Merging module JarvisCorePackageDiscoveredTests
+[18/23] /workspace/scratch/72db9576b02b/jarvis-work/JARVIS_Yerel_iOS_V3/.build/x86_64-unknown-linux-gnu/debug/JarvisCorePackageTests.derived/runner.swift
+[19/24] Wrapping AST for JarvisCorePackageDiscoveredTests for debugging
+[20/24] Write sources
+<unknown>:0: warning: legacy driver is now deprecated; consider avoiding specifying '-disallow-use-new-driver'
+<unknown>:0: warning: option '-incremental' is only supported in swift-driver
+[22/25] Compiling JarvisCorePackageTests runner.swift
+[23/26] Merging module JarvisCorePackageTests
+[23/25] Write Objects.LinkFileList
+<unknown>:0: warning: legacy driver is now deprecated; consider avoiding specifying '-disallow-use-new-driver'
+[24/25] Linking JarvisCorePackageTests.xctest
+Build complete! (3.21s)
+Test Suite 'All tests' started at 2026-10-18 17:35:38.368
+Test Suite 'debug.xctest' started at 2026-10-18 17:35:38.369
+Test Suite 'JarvisCoreTests' started at 2026-10-18 17:35:38.369
+Test Case 'JarvisCoreTests.testAtomicSaveRoundTripPreservesEvidenceAndSession' started at 2026-10-18 17:35:38.369
+Test Case 'JarvisCoreTests.testAtomicSaveRoundTripPreservesEvidenceAndSession' passed (0.009 seconds)
+Test Case 'JarvisCoreTests.testBothCorruptFilesFailWithoutWriting' started at 2026-10-18 17:35:38.378
+Test Case 'JarvisCoreTests.testBothCorruptFilesFailWithoutWriting' passed (0.003 seconds)
+Test Case 'JarvisCoreTests.testCompletionIsIdempotent' started at 2026-10-18 17:35:38.381
+Test Case 'JarvisCoreTests.testCompletionIsIdempotent' passed (0.102 seconds)
+Test Case 'JarvisCoreTests.testCorruptPrimaryRecoversBackupAndPreservesCorruptBytesUntilSave' started at 2026-10-18 17:35:38.484
+Test Case 'JarvisCoreTests.testCorruptPrimaryRecoversBackupAndPreservesCorruptBytesUntilSave' passed (0.007 seconds)
+Test Case 'JarvisCoreTests.testDoneTaskNotificationRemovedOnlyForToday' started at 2026-10-18 17:35:38.490
+Test Case 'JarvisCoreTests.testDoneTaskNotificationRemovedOnlyForToday' passed (0.004 seconds)
+Test Case 'JarvisCoreTests.testEmptyEvidenceCannotCompleteOrMutate' started at 2026-10-18 17:35:38.495
+Test Case 'JarvisCoreTests.testEmptyEvidenceCannotCompleteOrMutate' passed (0.001 seconds)
+Test Case 'JarvisCoreTests.testEveryAreaHasThreeConcreteOfflineSteps' started at 2026-10-18 17:35:38.496
+Test Case 'JarvisCoreTests.testEveryAreaHasThreeConcreteOfflineSteps' passed (0.0 seconds)
+Test Case 'JarvisCoreTests.testFutureSchemaRejected' started at 2026-10-18 17:35:38.496
+Test Case 'JarvisCoreTests.testFutureSchemaRejected' passed (0.0 seconds)
+Test Case 'JarvisCoreTests.testIstanbulDayBoundaryIndependentOfMachineZone' started at 2026-10-18 17:35:38.496
+Test Case 'JarvisCoreTests.testIstanbulDayBoundaryIndependentOfMachineZone' passed (0.001 seconds)
+Test Case 'JarvisCoreTests.testLegacyV3DataMigratesWithoutLosingNotes' started at 2026-10-18 17:35:38.497
+Test Case 'JarvisCoreTests.testLegacyV3DataMigratesWithoutLosingNotes' passed (0.0 seconds)
+Test Case 'JarvisCoreTests.testMalformedRecallLevelIsRejected' started at 2026-10-18 17:35:38.497
+Test Case 'JarvisCoreTests.testMalformedRecallLevelIsRejected' passed (0.001 seconds)
+Test Case 'JarvisCoreTests.testMalformedSessionStepCannotEnterTheUI' started at 2026-10-18 17:35:38.499
+Test Case 'JarvisCoreTests.testMalformedSessionStepCannotEnterTheUI' passed (0.001 seconds)
+Test Case 'JarvisCoreTests.testMidnightPreservesDraftAnswersWithoutCallingThemCompleted' started at 2026-10-18 17:35:38.500
+Test Case 'JarvisCoreTests.testMidnightPreservesDraftAnswersWithoutCallingThemCompleted' passed (0.002 seconds)
+Test Case 'JarvisCoreTests.testNewerPrimaryNeverRollsBackToOldBackup' started at 2026-10-18 17:35:38.502
+Test Case 'JarvisCoreTests.testNewerPrimaryNeverRollsBackToOldBackup' passed (0.003 seconds)
+Test Case 'JarvisCoreTests.testNotificationUsesActualAdaptiveTaskNotRegeneratedPlan' started at 2026-10-18 17:35:38.505
+Test Case 'JarvisCoreTests.testNotificationUsesActualAdaptiveTaskNotRegeneratedPlan' passed (0.007 seconds)
+Test Case 'JarvisCoreTests.testNotificationsAreFutureUniqueAndWithinQuietHours' started at 2026-10-18 17:35:38.512
+Test Case 'JarvisCoreTests.testNotificationsAreFutureUniqueAndWithinQuietHours' passed (0.004 seconds)
+Test Case 'JarvisCoreTests.testPausedTimerNeverCountsTimeAway' started at 2026-10-18 17:35:38.516
+Test Case 'JarvisCoreTests.testPausedTimerNeverCountsTimeAway' passed (0.001 seconds)
+Test Case 'JarvisCoreTests.testPlansRespectAllBudgetsAndNeverLoseAreas' started at 2026-10-18 17:35:38.517
+Test Case 'JarvisCoreTests.testPlansRespectAllBudgetsAndNeverLoseAreas' passed (0.001 seconds)
+Test Case 'JarvisCoreTests.testPromptBudgetAndNoDuplicateCurrentInput' started at 2026-10-18 17:35:38.518
+Test Case 'JarvisCoreTests.testPromptBudgetAndNoDuplicateCurrentInput' passed (0.001 seconds)
+Test Case 'JarvisCoreTests.testRecallFailureResetsScheduleAndSuccessExtendsIt' started at 2026-10-18 17:35:38.519
+Test Case 'JarvisCoreTests.testRecallFailureResetsScheduleAndSuccessExtendsIt' passed (0.001 seconds)
+Test Case 'JarvisCoreTests.testRolloverArchivesDayOnceAndKeepsCompletion' started at 2026-10-18 17:35:38.520
+Test Case 'JarvisCoreTests.testRolloverArchivesDayOnceAndKeepsCompletion' passed (0.002 seconds)
+Test Case 'JarvisCoreTests.testRolloverClearsPreviousDaySession' started at 2026-10-18 17:35:38.523
+Test Case 'JarvisCoreTests.testRolloverClearsPreviousDaySession' passed (0.002 seconds)
+Test Case 'JarvisCoreTests.testSkippedDaysAreNotInventedOrCalledYesterday' started at 2026-10-18 17:35:38.524
+Test Case 'JarvisCoreTests.testSkippedDaysAreNotInventedOrCalledYesterday' passed (0.001 seconds)
+Test Case 'JarvisCoreTests.testStaleCompletionDoesNotCountForNewDay' started at 2026-10-18 17:35:38.526
+Test Case 'JarvisCoreTests.testStaleCompletionDoesNotCountForNewDay' passed (0.001 seconds)
+Test Case 'JarvisCoreTests.testStreakSurvivesUnfinishedTodayAndBreaksOnGap' started at 2026-10-18 17:35:38.527
+Test Case 'JarvisCoreTests.testStreakSurvivesUnfinishedTodayAndBreaksOnGap' passed (0.003 seconds)
+Test Case 'JarvisCoreTests.testSwitchingTaskDoesNotDiscardDraft' started at 2026-10-18 17:35:38.530
+Test Case 'JarvisCoreTests.testSwitchingTaskDoesNotDiscardDraft' passed (0.002 seconds)
+Test Case 'JarvisCoreTests.testTimerCapsTargetAndRejectsBackwardClock' started at 2026-10-18 17:35:38.531
+Test Case 'JarvisCoreTests.testTimerCapsTargetAndRejectsBackwardClock' passed (0.001 seconds)
+Test Case 'JarvisCoreTests.testUndoRemovesOnlyCurrentTaskAndIsIdempotent' started at 2026-10-18 17:35:38.532
+Test Case 'JarvisCoreTests.testUndoRemovesOnlyCurrentTaskAndIsIdempotent' passed (0.001 seconds)
+Test Case 'JarvisCoreTests.testUnknownJSONIsNotAcceptedAsEmptyProfile' started at 2026-10-18 17:35:38.533
+Test Case 'JarvisCoreTests.testUnknownJSONIsNotAcceptedAsEmptyProfile' passed (0.0 seconds)
+Test Case 'JarvisCoreTests.testUnknownRatingsStayUnknown' started at 2026-10-18 17:35:38.533
+Test Case 'JarvisCoreTests.testUnknownRatingsStayUnknown' passed (0.001 seconds)
+Test Suite 'JarvisCoreTests' passed at 2026-10-18 17:35:38.534
+	 Executed 30 tests, with 0 failures (0 unexpected) in 0.164 (0.164) seconds
+Test Suite 'debug.xctest' passed at 2026-10-18 17:35:38.534
+	 Executed 30 tests, with 0 failures (0 unexpected) in 0.164 (0.164) seconds
+Test Suite 'All tests' passed at 2026-10-18 17:35:38.534
+	 Executed 30 tests, with 0 failures (0 unexpected) in 0.164 (0.164) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.0.3 (18c42c19cac3faf)
+✔ Test run with 0 tests passed after 0.001 seconds.

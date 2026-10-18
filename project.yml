@@ -1,0 +1,60 @@
+name: JarvisKoc
+options:
+  bundleIdPrefix: com.jarviskoc
+  deploymentTarget:
+    iOS: '26.0'
+  xcodeVersion: '26.0'
+settings:
+  base:
+    SWIFT_VERSION: '5.0'
+    IPHONEOS_DEPLOYMENT_TARGET: '26.0'
+    TARGETED_DEVICE_FAMILY: '1'
+    SUPPORTS_MACCATALYST: 'NO'
+    CODE_SIGN_STYLE: Automatic
+    DEVELOPMENT_TEAM: ''
+targets:
+  JarvisKoc:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources/Jarvis
+      - path: Sources/Core
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.jarviskoc.local
+        PRODUCT_NAME: JARVIS
+        PRODUCT_MODULE_NAME: JarvisKoc
+        SWIFT_EMIT_LOC_STRINGS: 'YES'
+    info:
+      path: Sources/Jarvis/Info.plist
+      properties:
+        CFBundleDisplayName: 'JARVIS Koç'
+        CFBundleShortVersionString: '0.4.0'
+        CFBundleVersion: '4'
+        NSMicrophoneUsageDescription: 'JARVIS, sen başlattığında konuşmanı cihazda metne dönüştürmek için mikrofona erişir.'
+        NSSpeechRecognitionUsageDescription: 'JARVIS Türkçe cihaz içi ses tanıma için izin ister; buluta ses göndermez.'
+        UIBackgroundModes: []
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UIUserInterfaceStyle: Dark
+        ITSAppUsesNonExemptEncryption: false
+  JarvisCoreTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Tests/JarvisCoreTests
+    dependencies:
+      - target: JarvisKoc
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: 'YES'
+schemes:
+  JarvisKoc:
+    build:
+      targets:
+        JarvisKoc: all
+        JarvisCoreTests: [test]
+    test:
+      targets:
+        - JarvisCoreTests
+      gatherCoverageData: true
