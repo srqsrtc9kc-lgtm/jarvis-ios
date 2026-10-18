@@ -15,6 +15,7 @@ settings:
 targets:
   JarvisKoc:
     type: application
+    productName: JARVIS
     platform: iOS
     sources:
       - path: Sources/Jarvis
