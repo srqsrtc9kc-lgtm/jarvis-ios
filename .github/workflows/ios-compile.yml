@@ -13,12 +13,16 @@ jobs:
   verify:
     runs-on: macos-26
     timeout-minutes: 30
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_26.6.app/Contents/Developer
     steps:
       - uses: actions/checkout@v4
       - name: Xcode ve Swift sürümü
         run: |
           xcodebuild -version
           swift --version
+      - name: IPA doğrulayıcı testleri
+        run: python3 -m unittest discover -s scripts -p 'test_*.py' -v
       - name: Çekirdek davranış testleri
         run: swift test
       - name: XcodeGen
@@ -51,6 +55,46 @@ jobs:
           -destination "platform=iOS Simulator,id=$JARVIS_SIMULATOR_ID"
           -resultBundlePath TestResults.xcresult
           CODE_SIGNING_ALLOWED=NO test-without-building
+      - name: Gerçek iPhone için imzasız Release derlemesi
+        run: |
+          set -euo pipefail
+          xcodebuild -project JarvisKoc.xcodeproj -scheme JarvisKoc \
+            -configuration Release -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build/iphoneos \
+            ARCHS=arm64 ONLY_ACTIVE_ARCH=NO \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY='' DEVELOPMENT_TEAM='' build
+      - name: Payload ve unsigned IPA oluştur, hedefi doğrula
+        run: |
+          set -euo pipefail
+          APP=build/iphoneos/Build/Products/Release-iphoneos/JARVIS.app
+          test -d "$APP"
+          mkdir -p build/package/Payload build/artifacts
+          ditto --norsrc "$APP" build/package/Payload/JARVIS.app
+          (cd build/package && zip -qry ../artifacts/JARVIS-unsigned.ipa Payload)
+          python3 scripts/verify_unsigned_ipa.py build/artifacts/JARVIS-unsigned.ipa \
+            | tee build/artifacts/validation.txt
+          (cd build/artifacts && shasum -a 256 JARVIS-unsigned.ipa > JARVIS-unsigned.ipa.sha256)
+          {
+            echo "Source commit: $GITHUB_SHA"
+            echo "Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            echo 'Configuration: Release; SDK: iphoneos; architecture: arm64; signing: disabled'
+            xcodebuild -version
+            xcrun --sdk iphoneos --show-sdk-version
+            xcrun vtool -show-build "$APP/JARVIS"
+            echo 'Not signed or tested on a physical iPhone. Re-sign with Sideloadly before installation.'
+          } > build/artifacts/build-info.txt
+          cp docs/WINDOWS-KURULUM.md build/artifacts/
+          cat build/artifacts/build-info.txt >> "$GITHUB_STEP_SUMMARY"
+          cat build/artifacts/validation.txt >> "$GITHUB_STEP_SUMMARY"
+      - name: İndirilebilir iPhone IPA paketini sakla
+        uses: actions/upload-artifact@v4
+        with:
+          name: JARVIS-iPhoneOS-arm64-unsigned
+          path: build/artifacts/
+          if-no-files-found: error
+          retention-days: 14
       - name: Test sonuçlarını sakla
         if: always()
         uses: actions/upload-artifact@v4

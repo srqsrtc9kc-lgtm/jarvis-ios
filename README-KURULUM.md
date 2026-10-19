@@ -2,7 +2,7 @@
 
 Güncelleme: 18 Ekim 2026 · Uygulama sürümü: 0.4.0
 
-Bu paket, önceki JARVIS 3 iOS kaynaklarının geliştirilmiş sürümüdür. **SwiftUI kaynak kodu, 30 çekirdek davranış testi ve GitHub Actions kontrol akışı içerir. İmzalı IPA veya telefonuna kurulmuş uygulama değildir.** Bu çalışmada iOS SDK/Xcode derlemesi ve gerçek iPhone testi yapılmadı.
+Bu paket, önceki JARVIS 3 iOS kaynaklarının geliştirilmiş sürümüdür. **SwiftUI kaynak kodu, 30 çekirdek davranış testi ve GitHub Actions kontrol akışı içerir. İmzalı IPA veya telefonuna kurulmuş uygulama değildir.** 18 Ekim 2026 tarihli GitHub çalışmasında iOS simülatör derlemesi ve testleri geçti. Gerçek iPhone testi yapılmadı. Windows kişisel kurulum yolu için [güncel rehberi](docs/WINDOWS-KURULUM.md) izle.
 
 ## Neler değişti?
 
@@ -30,11 +30,11 @@ Eller serbest varsayılan olarak kapalıdır. Açılış konuşması mikrofonu k
 
 ## Windows ile derleme yolu
 
-1. Arşivi aç. `JARVIS_iOS_V4` klasörünün **içeriğini**, ayrı Jarvis GitHub deponun köküne yerleştir. `Sources/Core`, `Sources/Jarvis`, `Tests`, `Package.swift`, `project.yml` ve `.github/workflows/ios-compile.yml` birlikte bulunmalı. Mevcut bir Jarvis deposunu güncelliyorsan eski `Sources/Jarvis/Models.swift` ve `ProactiveEngine.swift` dosyalarını kaldır; yeni karşılıkları `Sources/Core` içindedir.
-2. GitHub **Actions > JARVIS test ve iOS derleme > Run workflow** akışını çalıştır. Bu, macOS üzerinde çekirdek testlerini, iOS simulator derlemesini ve iOS birim testlerini çalıştıracak şekilde hazırlanmıştır. **Bu teslimde GitHub akışı çalıştırılmadı.**
-3. Yeşil kontrol sonucu bile gerçek cihazdaki Türkçe model/ses kalitesini doğrulamaz. Cihaz kontrol listesi `docs/CIHAZ-TESTI.md` içindedir.
-4. iPhone'a yükleme için macOS/Xcode ortamında Apple Developer takımınla imzalama gerekir. Mevcut bundle kimliği `com.jarviskoc.local` korunmuştur; halihazırda yüklenmiş başka bir bundle kimliği kullanıyorsan onu koru. Uygulamayı silip yeniden kurmak yerel kayıtlarını silebilir.
-5. Bu pakette imzalama sertifikası, provisioning profile, App Store Connect anahtarı veya otomatik TestFlight yüklemesi bulunmaz. Apple Developer hesabının varlığı tek başına ZIP'i kurulabilir hale getirmez.
+1. [Windows kurulum rehberini](docs/WINDOWS-KURULUM.md) izle. GitHub Actions akışı çekirdek ve simülatör testlerinden sonra gerçek iPhoneOS arm64 Release derlemesini imzasız üretir ve IPA yapısını doğrular.
+2. Başarılı çalışmadaki **JARVIS-iPhoneOS-arm64-unsigned** artifact ZIP'ini indir; içindeki **JARVIS-unsigned.ipa** dosyasını çıkar.
+3. Windows'ta Sideloadly ile kendi ücretsiz Apple hesabına yeniden imzalayıp yükle. Şifre ve 2FA yalnızca yerel Sideloadly/Apple ekranlarına girilir. TestFlight kullanılmaz.
+4. Ücretsiz kişisel imza 7 gün geçerlidir; aynı hesap/uygulama kimliğiyle uygulamayı silmeden yenile. Kayıtlarını Ayarlar'dan dışa aktar.
+5. Yeşil derleme sonucu, gerçek cihazdaki Türkçe model/ses kalitesini veya kurulum başarısını doğrulamaz. Cihaz kontrol listesi `docs/CIHAZ-TESTI.md` içindedir.
 
 Mac üzerinde doğrudan:
 
@@ -64,7 +64,7 @@ Xcode 26 veya üzeri ve iOS 26 veya üzeri hedeflenir. Yerel model ve Türkçe s
 | Tüm Swift kaynaklarının sözdizimi kontrolü | Geçti |
 | Proje ve GitHub Actions YAML kontrolü | Geçti |
 | Eski v3 profil biçimiyle geçiş testi | Geçti |
-| iOS SDK ile tip kontrolü / Xcode derlemesi | Bu ortamda yapılmadı |
+| iOS SDK ile tip kontrolü / Xcode simülatör derlemesi | [GitHub çalışması 39155744110](https://github.com/srqsrtc9kc-lgtm/jarvis-ios/actions/runs/39155744110) geçti |
 | Gerçek iPhone: ses, model, bildirim, arayüz | Yapılmadı |
 | IPA imzalama / TestFlight / App Store | Yapılmadı |
 

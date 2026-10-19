@@ -29,3 +29,20 @@ Bu bayrak bu test ortamına özgüdür. macOS GitHub akışında standart `swift
 - iOS imzalama, IPA kurulumu veya TestFlight dağıtımı.
 
 Bunlar için `CIHAZ-TESTI.md` ve macOS derleme akışı pakete eklendi. **Test geçti ifadesi bu bekleyen aşamaları kapsamıyor.**
+
+
+## GitHub simülatör doğrulaması — 18 Ekim 2026
+
+[Çalışma 39155744110](https://github.com/srqsrtc9kc-lgtm/jarvis-ios/actions/runs/39155744110),
+`1e9446ddbccd6119a901022c5facc2b055e4e97d` commit'i: başarılı.
+Xcode 26.6 (17F113), Swift 6.3.3. Çekirdek 30 test, iOS simülatör derlemesi
+ve iOS birim testi adımları geçti. Önceki bölümde bekleyen olarak belirtilen
+Xcode/SDK tip kontrolü ve simülatör derlemesi böylece doğrulandı.
+Bu çalışmanın tek artifact'ı test sonuçlarıydı; iPhoneOS IPA üretmedi.
+
+Yeni akış ayrıca `iphoneos`, `generic/platform=iOS`, `ARCHS=arm64`,
+`CODE_SIGNING_ALLOWED=NO` ile Release derler. IPA artifact'ı yalnızca test,
+derleme ve paket doğrulama adımları başarılıysa yüklenir. Her yeni çalışmanın
+kesin sonucu Actions sayfası ve artifact içindeki `build-info.txt` ile izlenir.
+Bu akışa sahip olmak tek başına başarılı derleme kanıtı değildir.
+Gerçek cihaz kurulumu, kişisel yeniden imzalama, ses ve model testi beklemektedir.
