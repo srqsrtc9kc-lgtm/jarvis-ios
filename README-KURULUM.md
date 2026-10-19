@@ -66,6 +66,7 @@ Xcode 26 veya üzeri ve iOS 26 veya üzeri hedeflenir. Yerel model ve Türkçe s
 | Eski v3 profil biçimiyle geçiş testi | Geçti |
 | iOS SDK ile tip kontrolü / Xcode simülatör derlemesi | [GitHub çalışması 39155744110](https://github.com/srqsrtc9kc-lgtm/jarvis-ios/actions/runs/39155744110) geçti |
 | Gerçek iPhone: ses, model, bildirim, arayüz | Yapılmadı |
+| iPhoneOS arm64 Release / imzasız IPA | [Çalışma 39183244996](https://github.com/srqsrtc9kc-lgtm/jarvis-ios/actions/runs/39183244996) geçti; indirilen IPA Windows'ta yeniden doğrulandı |
 | IPA imzalama / TestFlight / App Store | Yapılmadı |
 
 Ayrıntılı kayıt: `docs/DOGRULAMA.md`. Kaynak düzeyindeki kontrol, iPhone'da çalıştığının kanıtı değildir.

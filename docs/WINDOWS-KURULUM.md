@@ -7,6 +7,10 @@ kurulduğunu veya ses/AI özelliklerinin cihazda çalıştığını kanıtlamaz.
 
 ## İndir ve kur
 
+Ücretsiz geliştirici kaydın henüz yoksa [Apple Developer hesabında](https://developer.apple.com/account/)
+kendi Apple hesabınla giriş yapıp Apple Developer Agreement'ı kabul et.
+Ücretli Developer Program üyeliği satın almak bu kişisel kurulum yolunun adımı değildir.
+
 1. [GitHub Actions](https://github.com/srqsrtc9kc-lgtm/jarvis-ios/actions/workflows/ios-compile.yml)
    sayfasında en yeni **başarılı** çalışmayı aç. Gerekirse GitHub hesabınla giriş yap.
    Sayfanın altındaki **Artifacts > JARVIS-iPhoneOS-arm64-unsigned** paketini indir.

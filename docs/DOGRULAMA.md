@@ -46,3 +46,22 @@ derleme ve paket doğrulama adımları başarılıysa yüklenir. Her yeni çalı
 kesin sonucu Actions sayfası ve artifact içindeki `build-info.txt` ile izlenir.
 Bu akışa sahip olmak tek başına başarılı derleme kanıtı değildir.
 Gerçek cihaz kurulumu, kişisel yeniden imzalama, ses ve model testi beklemektedir.
+
+## iPhoneOS IPA doğrulaması — 19 Ekim 2026
+
+[Çalışma 39183244996](https://github.com/srqsrtc9kc-lgtm/jarvis-ios/actions/runs/39183244996),
+`1d499c9e8d8f9e8ba035ec401dcf6ddf1ff18bdd` commit'i: **başarılı**.
+
+- IPA doğrulayıcısının 12 testi, macOS üzerinde 30 çekirdek testi ve iOS
+  simülatöründe 30 test geçti; hata yok.
+- Xcode 26.6 (17F113), iPhoneOS SDK 26.5 ile Release derlemesi geçti.
+- Mach-O platformu `IOS`, mimari `arm64`, minimum iOS `26.0` olarak doğrulandı.
+- `Payload/JARVIS.app` içeren imzasız, şifrelenmemiş IPA üretildi.
+- [IPA artifact'ı](https://github.com/srqsrtc9kc-lgtm/jarvis-ios/actions/runs/39183244996/artifacts/12157151616)
+  indirildi; ZIP özeti GitHub artifact digest'iyle eşleşti. İçindeki IPA Windows'ta
+  aynı doğrulayıcıyla yeniden kontrol edildi.
+- IPA SHA-256: `1deeded80b580134d12815e74ac9d56815c9a1f933f217fe409aafffde9ed028`.
+- Özel entitlement veya harici Swift bağımlılığı eklemek gerekmedi.
+
+Bu sonuçlar kişisel Apple hesabıyla yeniden imzalamayı, iPhone'a kurulumu veya
+cihazdaki model/ses/bildirim çalışmasını doğrulamaz. Bunlar hâlâ beklemektedir.
